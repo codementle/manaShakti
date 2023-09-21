@@ -5,7 +5,8 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline"
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import FaceIcon from "@mui/icons-material/Face";
-import image from "./../../components/images/profilePng.png"
+import image from "./../../components/images/profilePng.png";
+import { useNavigate } from 'react-router-dom';
 
 
 const LoginSignUp = () => {
@@ -14,7 +15,7 @@ const LoginSignUp = () => {
     const loginTab = useRef(null);
     const registerTab = useRef(null);
     const switcherTab = useRef(null);
-    
+    const navigate = useNavigate();
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     
@@ -34,6 +35,7 @@ const LoginSignUp = () => {
     const loginSubmit = (e)=>{
         e.preventDefault();
         // dispatch(login(loginEmail,loginPassword))
+        navigate('/assesment')
     }
 
     const registerSubmit = (e) =>{

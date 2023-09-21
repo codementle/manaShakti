@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import Home from "./components/Home/Home.js";
 import LoginSignUp from './component/User/LoginSignUp.js';
+import Assesment from './components/Asssesment/Assesment';
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
     <Routes>
     <Route exact path="/" Component={Home} />
     <Route exact path="/login" Component={LoginSignUp} />
+    <Route exact path="/assesment" Component={Assesment} />
     </Routes>
       {/* <Footer /> */}
     </Router>

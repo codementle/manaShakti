@@ -17,7 +17,6 @@
   
     font: 600 2.5vmax "Roboto";
   }
-  
   .banner > p {
     font: 300 1.4vmax "Lucida Sans";
   }
@@ -33,7 +32,7 @@
     padding: 1vmax;
     transition: all 0.5s;
     width: vmax;
-    margin-right: 2rem;
+    margin-right: 2rem; 
     font: 500 1vmax "Roboto";
   }
   .banner > a > button:hover {

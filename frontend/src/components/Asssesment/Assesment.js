@@ -1,11 +1,12 @@
 import { useState } from "react";
 import "./Assesment.css";
 import List from "./List";
+import { useNavigate } from "react-router-dom";
 
 const Assesment = () => {
     const [index, setIndex] = useState(0);
     const arrayLen = List.length;
-
+    const navigate = useNavigate();
 
     const goBack =()=>{
         if(index>=1)
@@ -14,6 +15,10 @@ const Assesment = () => {
     const goForward =()=>{
         if(index<arrayLen-1)
         setIndex(index+1);
+        else if(index === arrayLen-1)
+        {
+            navigate('/success');
+        }
     }
 
     return(

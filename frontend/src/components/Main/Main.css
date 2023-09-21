@@ -1,0 +1,13 @@
+.assigment-list2
+{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    
+}
+.ass_name:hover
+{
+    cursor: pointer;
+}

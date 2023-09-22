@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
 import LaptopIcon from "@mui/icons-material/Laptop";
-import BookIcon from "@mui/icons-material/Book";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import GetAppIcon from "@mui/icons-material/GetApp";
 import styled from "styled-components";
 import Rooms from "./Rooms";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Main.css"
-import AssessmentIcon from '@mui/icons-material/Assessment';
-
+import { useSearchParams } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
-
-
+import TrackCard from "./TrackCard/TrackCard";
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import TakeAssesment from "./TakeAssesment/TakeAssesment";
 const style = {
   position: 'absolute',
   top: '50%',
@@ -30,10 +26,14 @@ const style = {
 };
 
 const Main = () => {
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const token = searchParams.get("token")
   const [open, setOpen] = useState(false);
+  const [displayTrack, setDisplayTrack] = useState(false);
+
   // Add more properties
   const navigate = useNavigate();
-
   const handleOpen = () => {
     setOpen(true);
   };
@@ -49,32 +49,39 @@ const Main = () => {
       name: "Take Assesment 2"
     }
   ]);
-  const [uploadedAssignments, setUploadedAssignments] = useState([
-    {
-      title: "Listen To Your Favourite Music",
-      desc: "Experience the healing power of music"
-    },
-    {
-      title: "Play Some Fun Games",
-      desc: "Join the Relaxation Session"
-    },
-    {
-      title: "Chat Anonymously",
-      desc: "Just Let your heart out. We are listening"
-    },
-    {
-      title: "Join Communities",
-      desc: "Just Let your heart out. We are listening"
-    },
-    {
-      title: "Motivational Videos and Quotes",
-      desc: "Just Let your heart out. We are listening"
-    },
-    {
-      title: "Track Your Streak",
-      desc: "Just Let your heart out. We are listening"
+  const [uploadedAssignments, setUploadedAssignments] = useState([{
+    title: "Listen To Your Favourite Music",
+    desc: "Experience the healing power of music"
+  },
+  {
+    title: "Play Some Fun Games",
+    desc: "Join the Relaxation Session"
+  },
+  {
+    title: "Chat Anonymously",
+    desc: "Just Let your heart out. We are listening"
+  },
+  {
+    title: "Join Communities",
+    desc: "Just Let your heart out. We are listening"
+  },
+  {
+    title: "Motivational Videos and Quotes",
+    desc: "Just Let your heart out. We are listening"
+  },
+  {
+    title: "Track Your Streak",
+    desc: "Just Let your heart out. We are listening"
+  }])
+
+
+  useEffect(() => {
+    console.log(typeof (token))
+    if (token === "123") {
+      setDisplayTrack(true);
     }
-  ]);
+  }, [])
+
 
   const navigateToAssesment = () => {
     navigate('/assesment')
@@ -87,7 +94,7 @@ const Main = () => {
         <Module>
           <Header>
             <LaptopIcon style={{ fontSize: "45px" }} />
-            <h3>Welcome to ManoVan</h3>
+            <h3 className="main_heading">Welcome to ManoVan</h3>
           </Header>
           <Panel>
             <div className="assignment" style={{ width: "25%" }}>
@@ -99,27 +106,28 @@ const Main = () => {
                 {assignments && assignments.length ? (
                   assignments.map((assignment) => (
                     //update key
-                    <AssignmentDesc onClick={handleOpen} key={assignment.name} className="ass_name">
-                      <AssessmentIcon />
+                    <div onClick={handleOpen}>
+                      {/* <AssignmentDesc   key={assignment.name} className="ass_name"> */}
+                      <TakeAssesment name={assignment.name} />
+                      {/* <Button variant="contained" >Start </Button> */}
+                      {/* <AssessmentIcon /> */}
                       {/*Add link to p tag <Link to={"/dashboard/assessment/" + assignmentCode}*/}
-                        <Modal
-                          open={open}
-                          onClose={handleClose}
-                          aria-labelledby="child-modal-title"
-                          aria-describedby="child-modal-description"
-                        >
-                          <Box sx={{ ...style, width: 200 }}>
-                            <h2 id="child-modal-title">It will take only a few seconds</h2>
-                            <p id="child-modal-description">
-                              Questions are simple. Just answer everything honestly
-                            </p>
-                            <Button onClick={navigateToAssesment}>Take Assesment Now</Button>
-                          </Box>
-                        </Modal>
-                        <p> {assignment.name}</p>
-                      <VisibilityIcon />
-                      <GetAppIcon />
-                    </AssignmentDesc>
+                      <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="child-modal-title"
+                        aria-describedby="child-modal-description"
+                      >
+                        <Box sx={{ ...style, width: 200 }}>
+                          <h2 id="child-modal-title">It will take only a few seconds</h2>
+                          <p id="child-modal-description">
+                            Questions are simple. Just answer everything honestly
+                          </p>
+                          <Button onClick={navigateToAssesment}>Take Assesment Now</Button>
+                        </Box>
+                      </Modal>
+                      {/* </AssignmentDesc> */}
+                    </div>
 
 
                   ))
@@ -133,7 +141,9 @@ const Main = () => {
                 <h3>Join Some Fun Activities and get Incentives</h3>
               </div>
               <hr />
+              {displayTrack ? <TrackCard /> : <p> <ArrowCircleLeftIcon /> Take Assesment now in order to Unlock Your Track</p>}
               <div className="assigment-list2" >
+                <br />
                 {uploadedAssignments && uploadedAssignments.length ? (
                   uploadedAssignments.map((assignment, key) => (
                     //update key
@@ -146,7 +156,7 @@ const Main = () => {
                     <Rooms title={assignment.title} img={key} desc={assignment.desc} />
                   ))
                 ) : (
-                  <p>No Uploaded Assignments</p>
+                  <p>Take Assesment now in order to Unlock Your Track</p>
                 )}
               </div>
             </div>
@@ -157,7 +167,7 @@ const Main = () => {
           <hr />
           <Infos>
             <Info>
-              <h4> Student name: XYZ</h4>
+              <h4> Student name: Mark</h4>
             </Info>
             <Info>
               <h4>Student Academic Details:</h4>
@@ -169,10 +179,10 @@ const Main = () => {
             </Info>
             <Info>
               <h4> Additional Info:</h4>
-              <p>Instagram Linked : Pending</p>
-              <p>Youtube Linked : Pending</p>
+              <p>Instagram Linked : Linked</p>
+              <p>Youtube Linked : Linked</p>
               <p>Facebook Linked : Pending</p>
-              <p>Twitter Linked : Pending</p>
+              <p>Twitter Linked : Linked</p>
             </Info>
           </Infos>
         </Sidebar>

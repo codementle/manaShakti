@@ -10,7 +10,7 @@ const AssesmentSuccess = () => {
     <div className="orderSuccess">
         <CheckCircleIcon />
         <Typography>Well Done! Your Response is Successfully Recorded</Typography>
-        <Link to="/" >Home Page</Link>
+        <Link to="/services?token=123" >Main Page</Link>
     </div>
   )
 }

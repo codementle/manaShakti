@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { MenuItem } from '@mui/material';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import "./Navbar.css";
+import { useNavigate } from 'react-router-dom';
 
 
 const pages = ['Assesment', 'Rooms', 'Chat'];
@@ -21,7 +22,7 @@ const settings = ['Profile', 'Account', 'Incentives', 'Logout'];
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const navigate = useNavigate();
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -29,12 +30,17 @@ function Navbar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (rm) => {
     setAnchorElNav(null);
+    if(rm==="room")
+    navigate("/services?token=123");
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (e) => {
     setAnchorElUser(null);
+    if(e.target.id==="Logout")
+    navigate("/");
+
   };
 
   return (
@@ -57,7 +63,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            ManoVan
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -116,15 +122,28 @@ function Navbar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
+            {pages.map((page) => {
+              if(page==="Rooms")
+              {
+              return (<Button
+                key={page}
+                onClick={()=>{handleCloseNavMenu("room")}}
+                sx={{ my: 2, color: 'black', display: 'block' }}
+              >
+                {page}
+              </Button>)
+              }
+              else
+              return (
+                <Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'black', display: 'block' }}
               >
                 {page}
               </Button>
-            ))}
+              )
+            })}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -150,8 +169,10 @@ function Navbar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+  
+                <MenuItem key={setting}  >
+                  <Typography textAlign="center">
+                  <span id={setting} onClick={handleCloseUserMenu}>{setting}</span></Typography>
                 </MenuItem>
               ))}
             </Menu>

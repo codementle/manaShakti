@@ -10,14 +10,16 @@ import chat from "./chat.jpg";
 import community from "./community.png"
 import motivation from "./motivation.jpg"
 import streak from "./streak.jpg"
+import "./Room.css";
 
 export default function Rooms(props) {
 
-    const imgarray = [music,games,chat,community,motivation,streak];
+  const imgarray = [music, games, chat, community, motivation, streak];
+
 
   return (
-    <Card sx={{ maxWidth: 250, margin: 2}}>
-      <CardActionArea>
+    <Card className="activities" sx={{ transition: '1s ease', maxWidth: 250, margin: 2}}>
+      <CardActionArea >
         <CardMedia
           component="img"
           height="140"
@@ -34,5 +36,8 @@ export default function Rooms(props) {
         </CardContent>
       </CardActionArea>
     </Card>
+
+
+    
   );
 }

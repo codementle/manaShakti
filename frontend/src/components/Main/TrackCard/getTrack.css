@@ -1,0 +1,12 @@
+.getTrack
+{
+    background-color: rgb(205, 194, 172);
+    border: 2px solid rgb(205, 194, 172);
+    
+}
+.getTrack:hover
+{
+    cursor: pointer;
+    border-color: black;
+    transform: scale(1.02);
+}

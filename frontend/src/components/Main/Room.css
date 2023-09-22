@@ -1,0 +1,12 @@
+.activities
+{
+    border: 1px solid white;
+
+    
+}
+.activities:hover
+{
+    cursor: pointer;
+    border-color: black;
+    transform: scale(1.09);
+}

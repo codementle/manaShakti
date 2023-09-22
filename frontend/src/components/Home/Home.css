@@ -21,7 +21,7 @@
     font: 300 1.4vmax "Lucida Sans";
   }
   
-  .banner > a > button {
+  .banner  > .btns > button {
     margin-bottom: 5vmax;
     cursor: pointer;
     background-color: white;
@@ -35,7 +35,7 @@
     margin-right: 2rem; 
     font: 500 1vmax "Roboto";
   }
-  .banner > a > button:hover {
+  .banner > .btns > button:hover {
     background-color: rgba(255, 255, 255, 0);
     color: rgb(0, 0, 0);
     border: 2px solid black;

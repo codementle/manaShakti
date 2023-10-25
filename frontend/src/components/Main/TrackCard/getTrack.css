@@ -2,11 +2,12 @@
 {
     background-color: rgb(205, 194, 172);
     border: 2px solid rgb(205, 194, 172);
-    
+    transition: 0.5s ease;
+    display: flex;
 }
 .getTrack:hover
 {
     cursor: pointer;
     border-color: black;
-    transform: scale(1.02);
+    transform: scale(1.04);
 }

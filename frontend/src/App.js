@@ -13,7 +13,6 @@ import Tracks from './components/Tracks/Tracks.js';
 
 const App = () => {
   return (
-
     <Router>
     <Navbar />
     {/* {isAuthenticated && <UserOptions user={user} />} */}

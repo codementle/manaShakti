@@ -47,8 +47,8 @@ const LoginSignUp = () => {
         myForm.set("password",password);
         myForm.set("avatar",avatar);
         myForm.set("school_id",school_id);
+        navigate('/services');
         // dispatch(register(myForm))
-
 }
 
 const registerDataChange = (e)=>{

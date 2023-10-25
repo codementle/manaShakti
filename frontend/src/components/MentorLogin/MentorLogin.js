@@ -113,7 +113,6 @@ const registerDataChange = (e)=>{
                 <div>
                     <div className="login_signUp_toggle">
                     <p onClick={(e)=>switchTabs(e,"login")}>Login</p>
-                    <p onClick={(e)=>switchTabs(e,"register")}>Register</p>
                     </div>
                     <button ref={switcherTab}></button>
                 </div>

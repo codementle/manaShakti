@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import TrackCard from "./TrackCard/TrackCard";
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import TakeAssesment from "./TakeAssesment/TakeAssesment";
+import Profile from "./Profile/Profile.js"
 const style = {
   position: 'absolute',
   top: '50%',
@@ -43,10 +44,10 @@ const Main = () => {
 
   const [assignments, setAssignments] = useState([
     {
-      name: "Take Assesment 1"
+      name: "Take Assessment"
     },
     {
-      name: "Take Assesment 2"
+      name: "Take Assessment"
     }
   ]);
   const [uploadedAssignments, setUploadedAssignments] = useState([{
@@ -63,15 +64,15 @@ const Main = () => {
   },
   {
     title: "Join Communities",
-    desc: "Just Let your heart out. We are listening"
+    desc: "Be a part of our global community"
   },
   {
     title: "Motivational Videos and Quotes",
-    desc: "Just Let your heart out. We are listening"
+    desc: "You are not alone. Seek Solution from Experience"
   },
   {
     title: "Track Your Streak",
-    desc: "Just Let your heart out. We are listening"
+    desc: "How's Your streak going? Keep Going"
   }])
 
 
@@ -99,7 +100,7 @@ const Main = () => {
           <Panel>
             <div className="assignment" style={{ width: "25%" }}>
               <div className="sub-header">
-                <h3>Assesments Taken</h3>
+                <h3>Assessments Taken</h3>
               </div>
               <hr />
               <div className="assigment-list">
@@ -116,6 +117,7 @@ const Main = () => {
                         open={open}
                         onClose={handleClose}
                         aria-labelledby="child-modal-title"
+
                         aria-describedby="child-modal-description"
                       >
                         <Box sx={{ ...style, width: 200 }}>
@@ -123,7 +125,7 @@ const Main = () => {
                           <p id="child-modal-description">
                             Questions are simple. Just answer everything honestly
                           </p>
-                          <Button onClick={navigateToAssesment}>Take Assesment Now</Button>
+                          <Button onClick={navigateToAssesment}>Take Assessment Now</Button>
                         </Box>
                       </Modal>
                       {/* </AssignmentDesc> */}
@@ -141,7 +143,7 @@ const Main = () => {
                 <h3>Join Some Fun Activities and get Incentives</h3>
               </div>
               <hr />
-              {displayTrack ? <TrackCard /> : <p> <ArrowCircleLeftIcon /> Take Assesment now in order to Unlock Your Track</p>}
+              {displayTrack ? <TrackCard /> : <p> <ArrowCircleLeftIcon /> Take Assessment now in order to Unlock Your Track</p>}
               <div className="assigment-list2" >
                 <br />
                 {uploadedAssignments && uploadedAssignments.length ? (
@@ -163,7 +165,8 @@ const Main = () => {
           </Panel>
         </Module>
         <Sidebar>
-          <h3>Student Information</h3>
+          <Profile />
+          {/* <h3>Student Information</h3>
           <hr />
           <Infos>
             <Info>
@@ -184,7 +187,7 @@ const Main = () => {
               <p>Facebook Linked : Pending</p>
               <p>Twitter Linked : Linked</p>
             </Info>
-          </Infos>
+          </Infos> */}
         </Sidebar>
       </Container>
     </>

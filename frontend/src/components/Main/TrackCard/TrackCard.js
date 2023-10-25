@@ -16,8 +16,10 @@ export default function TrackCard() {
         navigate('/track');
     }
 
+    
   return (
-    <Card className='getTrack' sx={{ display: 'flex' }}>
+    <div className='getTrack'>
+    <Card  sx={{ display: 'flex' }}>
       <CardMedia
         component="img"
         sx={{ width: 550, height : 150 }}
@@ -36,5 +38,6 @@ export default function TrackCard() {
       </Box>
     
     </Card>
+    </div>
   );
 }

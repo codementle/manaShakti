@@ -14,9 +14,8 @@ const Home = () => {
   return (
     <>
       <div className="banner">
-        <p>Welcome to ManaShakti</p>
+        <p>Welcome to ManoVan</p>
         <h1>Uplifting Life by Empowering Minds</h1>
-        {/* <div className="signInBtns"> */}
         <div className="btns">
             <button onClick={redirectToChildren}>
               Login/SignUp for Children <PersonIcon className='loginIcon' />
@@ -25,7 +24,6 @@ const Home = () => {
               Login/SignUp for Mentors <HailIcon className='loginIcon' />
             </button>
             </div>
-        {/* </div> */}
       </div>
     </>
   )
